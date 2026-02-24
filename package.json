@@ -19,7 +19,7 @@
     "description": "Filesystem storage plugin for Taker of Notes",
     "dependencies": {
         "gray-matter": "^4.0.3",
-        "takerofnotes-plugin-sdk": "^0.3.0"
+        "takerofnotes-plugin-sdk": "^0.4.0"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^29.0.0",
