@@ -1,5 +1,3 @@
-import path from 'path'
-import { app } from 'electron'
 import FileSystemAdapter from './FileSystemAdapter'
 import { definePlugin } from 'takerofnotes-plugin-sdk'
 
@@ -14,7 +12,7 @@ export default definePlugin({
             key: 'notesDir',
             label: 'Notes Directory',
             type: 'directory',
-            default: path.join(app.getPath('userData'), 'notes'),
+            default: '__DEFAULT_USER_DATA__/notes',
             required: true,
         },
     ],
