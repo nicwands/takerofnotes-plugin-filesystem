@@ -6,7 +6,7 @@ export default definePlugin({
     name: 'Filesystem',
     description: 'Store notes as markdown files on your local filesystem',
     version: '1.0.0',
-    apiVersion: '0.2.0',
+    apiVersion: '0.3.0',
     configSchema: [
         {
             key: 'notesDir',
