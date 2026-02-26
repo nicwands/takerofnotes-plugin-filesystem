@@ -1,4 +1,4 @@
-import { BaseNotesAdapter } from 'takerofnotes-plugin-sdk'
+import { BaseNotesAdapter } from '@takerofnotes/plugin-sdk'
 import matter from 'gray-matter'
 import fs from 'fs/promises'
 import path from 'path'

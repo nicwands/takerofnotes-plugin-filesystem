@@ -1,5 +1,5 @@
 import FileSystemAdapter from './FileSystemAdapter'
-import { definePlugin } from 'takerofnotes-plugin-sdk'
+import { definePlugin } from '@takerofnotes/plugin-sdk'
 
 export default definePlugin({
     id: 'filesystem',
