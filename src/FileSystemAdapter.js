@@ -1,5 +1,4 @@
 import { BaseNotesAdapter } from '@takerofnotes/plugin-sdk'
-import matter from 'gray-matter'
 import fs from 'fs/promises'
 import path from 'path'
 
@@ -21,16 +20,13 @@ export default class FileSystemAdapter extends BaseNotesAdapter {
         const notes = []
 
         for (const file of files) {
-            if (!file.endsWith('.md')) continue
+            if (!file.endsWith('.json')) continue
 
             const fullPath = path.join(this.notesDir, file)
-            const raw = await fs.readFile(fullPath, 'utf8')
-            const parsed = matter(raw)
+            const fileContent = await fs.readFile(fullPath, 'utf8')
+            const parsedFile = JSON.parse(fileContent)
 
-            notes.push({
-                ...parsed.data,
-                content: parsed.content,
-            })
+            notes.push(parsedFile)
         }
 
         return notes
@@ -45,21 +41,15 @@ export default class FileSystemAdapter extends BaseNotesAdapter {
     }
 
     async delete(id) {
-        const filePath = path.join(this.notesDir, `${id}.md`)
+        const filePath = path.join(this.notesDir, `${id}.json`)
         await fs.unlink(filePath)
     }
 
     async _write(note) {
-        const filePath = path.join(this.notesDir, `${note.id}.md`)
+        const filePath = path.join(this.notesDir, `${note.id}.json`)
 
-        const fileContent = matter.stringify(note.content, {
-            id: note.id,
-            title: note.title,
-            category: note.category ?? null,
-            createdAt: note.createdAt,
-            updatedAt: note.updatedAt,
-        })
+        const stringifiedNote = JSON.stringify(note)
 
-        await fs.writeFile(filePath, fileContent, 'utf8')
+        await fs.writeFile(filePath, stringifiedNote, 'utf8')
     }
 }

@@ -10,18 +10,19 @@
     "exports": "./dist/index.js",
     "scripts": {
         "build": "rollup -c",
+        "test": "vitest",
         "prepublishOnly": "npm run build"
     },
     "author": "nicwands",
     "license": "MIT",
     "description": "Filesystem storage plugin for Taker of Notes",
     "dependencies": {
-        "@takerofnotes/plugin-sdk": "^0.1.0",
-        "gray-matter": "^4.0.3"
+        "@takerofnotes/plugin-sdk": "^0.3.1"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^29.0.0",
         "@rollup/plugin-node-resolve": "^16.0.3",
-        "rollup": "^4.59.0"
+        "rollup": "^4.59.0",
+        "vitest": "^3.0.0"
     }
 }
